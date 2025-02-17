@@ -4,36 +4,63 @@ package edu.grinnell.csc207.texteditor;
  * A naive implementation of a text buffer using a <code>String</code>.
  */
 public class SimpleStringBuffer {
+
+    private String str;
+    private int sz;
+    private int index;
+
+    SimpleStringBuffer() {
+        this.str = "";
+        this.index = 0;
+        this.sz = 0;
+    }
+
     public void insert(char ch) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        char[] retch = new char[1];
+        retch[0] = ch;
+        String retstr = new String(retch);
+
+        String before = (this.str).substring(0, index);
+        String after = (this.str).substring(index, sz);
+        this.str = (before + retstr + after);
+        this.sz ++;
+        this.index ++;
     }
 
     public void delete() {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (this.index == 0)
+            return;
+        String before = (this.str).substring(0, index - 1);
+        String after = (this.str).substring(index, sz);
+        this.str = (before + after);
+        this.sz --;
+        this.index --;
     }
 
     public int getCursorPosition() {
-        throw new UnsupportedOperationException("Unimplemented method 'getCursorPosition'");
+        return this.index;
     }
 
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if (this.index > 0)
+            this.index --;
     }
 
     public void moveRight() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveRight'");
+        if (this.index < this.sz)
+            this.index ++;
     }
 
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+        return this.sz;
     }
 
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        return (this.str).charAt(this.index);
     }
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return this.str;
     }
 }
