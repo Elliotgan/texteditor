@@ -14,7 +14,7 @@ public class SimpleStringBufferTests {
      * @param str2 a string
      * @return boolean that represent if two strings are identical
      */
-    public static boolean strcompare (String str1, String str2){
+    private static boolean strcompare (String str1, String str2){
         if (str1.length() != str2.length())
             return false;
         for (int iter = 0; iter < str1.length(); iter++)
