@@ -85,13 +85,13 @@ public class SimpleStringBuffer {
     /**
      * get the char at specific position
      * @param i int 
-     * @return the char at i
-     * @throws java.lang.InterruptedException 
+     * @return the char at i 
+     * @throws IndexOutOfBoundsException
      */
-    public char getChar(int i) throws InterruptedException {
+    public char getChar(int i) throws IndexOutOfBoundsException {
         if((0 <= i) && (i < this.sz))
-          return (this.str).charAt(this.index);
-        throw new InterruptedException("int i not in range");
+          return (this.str).charAt(i);
+        throw new IndexOutOfBoundsException("int i not in range");
     }
 
     /**
