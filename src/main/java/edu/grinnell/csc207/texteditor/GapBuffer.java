@@ -28,18 +28,26 @@ public class GapBuffer {
         System.arraycopy(charr_cpy, breakpoint, charr_pst, (charr_pst.length - (charr_cpy.length - breakpoint)), (charr_cpy.length - breakpoint));
     }
     
+    /**
+     * insert the ch in current index of buffer
+     * @param ch the ch that should be inserted
+     */
     public void insert(char ch) {
         if (this.index == this.gap_end){
-            char[] newcharr = new char[this.sz + 5];
+            char[] newcharr = new char[this.sz * 2];
             copychar(this.charr, this.index, newcharr);
             this.charr = newcharr;
-            this.gap_end += 5;
-            this.sz += 5;
+            this.gap_end += this.sz;
+            this.sz *= 2;
         }
         this.charr[this.index] = ch;
         this.index++;
     }
 
+    /**
+     * delete the ch in current index of budder, if the
+     * index is at 0, do nothing.
+     */
     public void delete() {
         if (this.index == 0){
             return;
@@ -47,10 +55,18 @@ public class GapBuffer {
         this.index--;
     }
 
+    /**
+     * get the position of cursor
+     * @return int that represents position of cursor
+     */
     public int getCursorPosition() {
         return this.index;
     }
 
+    /**
+     * move cursor, which is the index, towards left
+     * if the index is  at leftmost position, do nothing.
+     */
     public void moveLeft() {
         if (this.index <= 0)
             return;
@@ -59,6 +75,10 @@ public class GapBuffer {
         this.index --;
     }
 
+    /**
+     * move cursor, which is the index, towards right
+     * if the index is  at rightmost position, do nothing.
+     */
     public void moveRight() {
         if (this.gap_end >= this.sz)
             return;
@@ -67,10 +87,20 @@ public class GapBuffer {
         this.index ++;
     }
 
+    /**
+     * get the current size of buffer
+     * @return int that represents current size of buffer
+     */
     public int getSize() {
         return (this.sz - (this.gap_end - this.index));
     }
 
+    /**
+     * get the char at specific position
+     * @param i int 
+     * @return the char at i 
+     * @throws IndexOutOfBoundsException
+     */
     public char getChar(int i) throws IndexOutOfBoundsException{
         if (!(0 <= i) && (i < this.getSize()))
             throw new IndexOutOfBoundsException("invalid position");
@@ -80,6 +110,10 @@ public class GapBuffer {
         
     }
 
+    /**
+     * return string stored in buffer. Gaps are skipped
+     * @return string stored in buffer
+     */
     public String toString() {
         char[] ret = new char[this.getSize()];
         int head_length = index;
