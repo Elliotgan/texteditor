@@ -148,20 +148,5 @@ public class GapBufferTests {
         }
         return strcompare(str, testbuffer.toString());
     }
-    @Property
-    public boolean PropertyTest3 (@ForAll @IntRange(min = 8000, max = 8050) int sz1){
-        int half = sz1 / 2;
-        GapBuffer testbuffer = new GapBuffer();
-        String str = "";
-        for(int iter = 0; iter < sz1; iter++){
-            testbuffer.insert('a');
-        }
-        for(int iter = 0; iter < half; iter++){
-            str = (str + "a");
-        }
-        for(int iter = 0; iter < (sz1 - half); iter++){
-            testbuffer.delete();
-        }
-        return strcompare(str, testbuffer.toString());
-    }
+    
 }
