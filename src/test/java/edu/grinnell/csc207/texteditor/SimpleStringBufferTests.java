@@ -69,6 +69,20 @@ public class SimpleStringBufferTests {
     }
     
     @Test
+    public void NormalCase4() throws InterruptedException{
+        SimpleStringBuffer testbuffer = new SimpleStringBuffer();
+        testbuffer.insert('a');
+        testbuffer.insert('b');
+        testbuffer.insert('c');
+        assertEquals (testbuffer.getCursorPosition(), 3);
+        testbuffer.moveLeft();
+        assertEquals (testbuffer.getCursorPosition(), 2);
+        assert (testbuffer.getChar(0) == 'a');
+        assert (testbuffer.getChar(1) == 'b');
+        assert (testbuffer.getChar(2) == 'c');
+    }
+    
+    @Test
     public void EdgeCase1(){
         SimpleStringBuffer testbuffer = new SimpleStringBuffer();
         testbuffer.insert('a');
