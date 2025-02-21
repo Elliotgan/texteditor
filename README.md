@@ -64,7 +64,25 @@ since in those steps, string with length 2 in total is created.
 
 ## Changelog
 
-commit e5d82c59329a1acc2f3b0b6548f032d7536256b8 (HEAD -> main, origin/main, origin/HEAD)
+commit 51c3db40549b0343e33418def67dc8dcc0551d3a (HEAD -> main)
+Author: Elliot <Elliot@132.161.240.94>
+Date:   Fri Feb 21 08:37:36 2025 +0800
+
+    formatted
+
+commit 5015764df074c7045e50533fadac77701384115e
+Author: Elliot <Elliot@132.161.240.94>
+Date:   Fri Feb 21 08:36:56 2025 +0800
+
+    Main procedure completed, format changed
+
+commit 0a7a170821987f4465c0412b243ac68f20849686 (origin/main, origin/HEAD)
+Author: Elliot <elliotgan@126.com>
+Date:   Mon Feb 17 09:53:06 2025 +0000
+
+    README completed
+
+commit e5d82c59329a1acc2f3b0b6548f032d7536256b8
 Author: Elliot <elliotgan@126.com>
 Date:   Mon Feb 17 09:48:27 2025 +0000
 
