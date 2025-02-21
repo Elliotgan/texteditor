@@ -27,21 +27,21 @@ public class TextEditor {
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         int row;
         int col;
-        int num_in_row = 60;
+        int numInRow = 60;
         for (int iter = 0; iter < buf.getSize(); iter++) {
-            row = iter / num_in_row;
-            col = (iter % num_in_row);
+            row = iter / numInRow;
+            col = (iter % numInRow);
             TextCharacter tc = TextCharacter.fromCharacter(buf.getChar(iter))[0];
             screen.setCharacter(col, row, tc);
         }
         for (int iter = buf.getSize(); iter < buf.getrealsize(); iter++) {
             TextCharacter tc = TextCharacter.fromCharacter(' ')[0];
-            row = iter / num_in_row;
-            col = (iter % num_in_row);
+            row = iter / numInRow;
+            col = (iter % numInRow);
             screen.setCharacter(col, row, tc);
         }
-        row = buf.getCursorPosition() / num_in_row;
-        col = (buf.getCursorPosition() % num_in_row);
+        row = buf.getCursorPosition() / numInRow;
+        col = (buf.getCursorPosition() % numInRow);
         TerminalPosition pos = new TerminalPosition(col, row);
         screen.setCursorPosition(pos);
         screen.refresh();
@@ -93,9 +93,9 @@ public class TextEditor {
         String path = args[0];
         System.out.format("Loading %s...\n", path);
         GapBuffer buf = new GapBuffer();
-        Path file_path = Paths.get(path);
-        if (Files.exists(file_path) && Files.isRegularFile(file_path)) {
-            String input = Files.readString(file_path);
+        Path filePath = Paths.get(path);
+        if (Files.exists(filePath) && Files.isRegularFile(filePath)) {
+            String input = Files.readString(filePath);
             for (int iter = 0; iter < input.length(); iter++) {
                 buf.insert(input.charAt(iter));
             }
@@ -112,7 +112,7 @@ public class TextEditor {
             KeyStroke stroke = screen.readInput();
             isrunning = changeBuffer(buf, stroke);
             drawBuffer(buf, screen);
-            Files.writeString(file_path, buf.toString());
+            Files.writeString(filePath, buf.toString());
         }
         screen.stopScreen();
         System.err.println("Finished!");

@@ -8,7 +8,7 @@ public class GapBuffer {
     private char[] charr;
     private int sz;
     private int index;
-    private int gap_end;
+    private int gapEnd;
 
     /**
      * A more complex but efficient way to handle with buffer
@@ -17,7 +17,7 @@ public class GapBuffer {
         this.charr = new char[5];
         this.sz = 5;
         this.index = 0;
-        this.gap_end = 5;
+        this.gapEnd = 5;
     }
 
     /**
@@ -26,12 +26,15 @@ public class GapBuffer {
      * charr_pst. length of charr_cpy should not be longer than length of
      * charr_pst
      *
-     * @param charr_cpy
-     * @param charr_pst
+     * @param charrcpy
+     * @param breakpoint
+     * @param charrpst
      */
-    private static void copychar(char[] charr_cpy, int breakpoint, char[] charr_pst) {
-        System.arraycopy(charr_cpy, 0, charr_pst, 0, breakpoint);
-        System.arraycopy(charr_cpy, breakpoint, charr_pst, (charr_pst.length - (charr_cpy.length - breakpoint)), (charr_cpy.length - breakpoint));
+    private static void copychar(char[] charrcpy, int breakpoint, char[] charrpst) {
+        System.arraycopy(charrcpy, 0, charrpst, 0, breakpoint);
+        System.arraycopy(charrcpy, breakpoint, charrpst,
+                (charrpst.length - (charrcpy.length - breakpoint)),
+                (charrcpy.length - breakpoint));
     }
 
     /**
@@ -40,11 +43,11 @@ public class GapBuffer {
      * @param ch the ch that should be inserted
      */
     public void insert(char ch) {
-        if (this.index == this.gap_end) {
+        if (this.index == this.gapEnd) {
             char[] newcharr = new char[this.sz * 2];
             copychar(this.charr, this.index, newcharr);
             this.charr = newcharr;
-            this.gap_end += this.sz;
+            this.gapEnd += this.sz;
             this.sz *= 2;
         }
         this.charr[this.index] = ch;
@@ -79,8 +82,8 @@ public class GapBuffer {
         if (this.index <= 0) {
             return;
         }
-        this.charr[this.gap_end - 1] = this.charr[this.index - 1];
-        this.gap_end--;
+        this.charr[this.gapEnd - 1] = this.charr[this.index - 1];
+        this.gapEnd--;
         this.index--;
     }
 
@@ -89,11 +92,11 @@ public class GapBuffer {
      * rightmost position, do nothing.
      */
     public void moveRight() {
-        if (this.gap_end >= this.sz) {
+        if (this.gapEnd >= this.sz) {
             return;
         }
-        this.charr[this.index] = this.charr[this.gap_end];
-        this.gap_end++;
+        this.charr[this.index] = this.charr[this.gapEnd];
+        this.gapEnd++;
         this.index++;
     }
 
@@ -103,7 +106,7 @@ public class GapBuffer {
      * @return int that represents current size of buffer
      */
     public int getSize() {
-        return (this.sz - (this.gap_end - this.index));
+        return (this.sz - (this.gapEnd - this.index));
     }
 
     /**
@@ -120,7 +123,7 @@ public class GapBuffer {
         if (i < index) {
             return this.charr[i];
         }
-        return this.charr[i + (this.gap_end - this.index)];
+        return this.charr[i + (this.gapEnd - this.index)];
 
     }
 
@@ -132,10 +135,14 @@ public class GapBuffer {
     @Override
     public String toString() {
         char[] ret = new char[this.getSize()];
-        int head_length = index;
-        int tail_length = (this.sz - this.gap_end);
-        System.arraycopy(this.charr, 0, ret, 0, head_length);
-        System.arraycopy(this.charr, this.gap_end, ret, (this.getSize() - tail_length), (this.sz - this.gap_end));
+        int headlength = index;
+        int taillength = (this.sz - this.gapEnd);
+        System.arraycopy(this.charr, 0, ret, 0, headlength);
+        System.arraycopy(this.charr,
+                this.gapEnd,
+                ret,
+                (this.getSize() - taillength),
+                (this.sz - this.gapEnd));
         return (new String(ret));
     }
 
