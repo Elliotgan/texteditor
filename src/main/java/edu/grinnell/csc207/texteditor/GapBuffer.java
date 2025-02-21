@@ -10,7 +10,10 @@ public class GapBuffer {
     private int index;
     private int gap_end;
 
-    GapBuffer() {
+    /**
+     * A more complex but efficient way to handle with buffer
+     */
+    public GapBuffer() {
         this.charr = new char[5];
         this.sz = 5;
         this.index = 0;

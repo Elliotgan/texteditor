@@ -12,7 +12,7 @@ public class SimpleStringBuffer {
     /**
      * A naive implementation of a text buffer using a string.
      */
-    SimpleStringBuffer() {
+    public SimpleStringBuffer() {
         this.str = "";
         this.index = 0;
         this.sz = 0;
