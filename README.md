@@ -64,7 +64,25 @@ since in those steps, string with length 2 in total is created.
 
 ## Changelog
 
-commit 51c3db40549b0343e33418def67dc8dcc0551d3a (HEAD -> main)
+commit 3ca2ff6d8238b02fe4a06af1501b9685694d5f6c (HEAD -> main)
+Author: Elliot <Elliot@132.161.240.94>
+Date:   Fri Feb 21 11:39:44 2025 +0800
+
+    style issues fixed
+
+commit 7e169f1963f91288f7038d2632839d737b646be9 (origin/main, origin/HEAD)
+Author: Elliot <Elliot@132.161.240.94>
+Date:   Fri Feb 21 08:53:15 2025 +0800
+
+    try to pass autograder
+
+commit e3055d6129b5f2bd9a80c5e2a9ba34b97665d8bb
+Author: Elliot <Elliot@132.161.240.94>
+Date:   Fri Feb 21 08:42:47 2025 +0800
+
+    changelog added
+
+commit 51c3db40549b0343e33418def67dc8dcc0551d3a
 Author: Elliot <Elliot@132.161.240.94>
 Date:   Fri Feb 21 08:37:36 2025 +0800
 
@@ -76,7 +94,7 @@ Date:   Fri Feb 21 08:36:56 2025 +0800
 
     Main procedure completed, format changed
 
-commit 0a7a170821987f4465c0412b243ac68f20849686 (origin/main, origin/HEAD)
+commit 0a7a170821987f4465c0412b243ac68f20849686
 Author: Elliot <elliotgan@126.com>
 Date:   Mon Feb 17 09:53:06 2025 +0000
 
